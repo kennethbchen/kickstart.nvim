@@ -28,7 +28,7 @@ return {
       words = { enabled = false },
     },
   },
-
+  -- https://github.com/S1M0N38/love2d.nvim
   {
     'S1M0N38/love2d.nvim',
     cmd = 'LoveRun',
