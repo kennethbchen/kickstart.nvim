@@ -189,6 +189,8 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+
+        { '<leader>p', group = '[P]roject' },
       },
     },
   },
@@ -764,6 +766,20 @@ require('lazy').setup({
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
+      require('mini.sessions').setup()
+
+      -- List sessions
+      vim.keymap.set('n', '<leader>pl', require('mini.sessions').select, { desc = '[P]roject [L]ist' })
+
+      -- Create new session with specified name
+      vim.keymap.set('n', '<leader>pc', function()
+        vim.ui.input({ prompt = 'Session name: ' }, function(input)
+          if input ~= nil then
+            require('mini.sessions').write(input)
+          end
+        end)
+      end, { desc = '[P]roject [C]reate' })
+
       -- Better Around/Inside textobjects
       --
       -- Examples:
@@ -815,7 +831,7 @@ require('lazy').setup({
 
           -- Content for inactive window(s)
           inactive = function()
-            return ' 󰄛 󰒲  ' .. MiniStatusline.section_filename { trunc_width = 140 }
+            return ' 󰄛 󰒲 ' .. MiniStatusline.section_filename { trunc_width = 140 }
           end,
         },
 
