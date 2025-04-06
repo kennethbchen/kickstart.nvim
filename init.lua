@@ -806,8 +806,7 @@ require('lazy').setup({
         content = {
           -- Content for active window
           active = function()
-            -- Always truncate mode
-            local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 1000 }
+            local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 40 }
 
             local git = MiniStatusline.section_git { trunc_width = 40 }
             local diff = MiniStatusline.section_diff { trunc_width = 75 }
@@ -831,7 +830,15 @@ require('lazy').setup({
 
           -- Content for inactive window(s)
           inactive = function()
-            return ' 󰄛 󰒲 ' .. MiniStatusline.section_filename { trunc_width = 140 }
+            return MiniStatusline.combine_groups {
+              {
+                hl = 'MiniStatusLineDevinfo',
+                strings = {
+                  ' 󰄛 󰒲 ',
+                  MiniStatusline.section_filename { trunc_width = nil },
+                },
+              },
+            }
           end,
         },
 
