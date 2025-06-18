@@ -38,11 +38,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Snacks Terminal
 
-vim.keymap.set('n', '<C-_>', function()
+vim.keymap.set('n', '<C-/>', function()
   Snacks.terminal(nil)
 end, { desc = 'Open Terminal' })
 
-vim.keymap.set('t', '<C-_>', function()
+vim.keymap.set('t', '<C-/>', function()
   Snacks.terminal(nil)
 end, { desc = 'Close Terminal' })
 
