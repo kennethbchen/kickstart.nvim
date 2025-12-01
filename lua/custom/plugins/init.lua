@@ -59,4 +59,8 @@ return {
       { '<leader>vs', '<cmd>LoveStop<cr>', ft = 'lua', desc = 'Stop LÖVE' },
     },
   },
+  --  https://jackharrington.bearblog.dev/lazyvim-nvim-godot/
+  -- https://github.com/habamax/vim-godot
+  --{ 'habamax/vim-godot' },
+  { 'teatek/gdscript-extended-lsp.nvim', opts = { view_type = 'floating', picker = 'snacks' } },
 }
